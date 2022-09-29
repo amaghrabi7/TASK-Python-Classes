@@ -12,9 +12,6 @@ class Wallet:
         if self.money >= self.amount:
             self.money = self.money - self.amount
             print(f"You now have {self.money} KWD in your wallet.")
-        else:
-            print("Transaction void due to insufficient wallet funds.")
-        
 
     def __str__(self):
         return f"You have {self.money} KWD in your wallet."
