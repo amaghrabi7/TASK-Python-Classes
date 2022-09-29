@@ -29,7 +29,7 @@ class Person:
     def moveTo(self, point):
         self.point = point
         self.location = self.point
-        print(f"Your new location now is {self.location}")
+        print(f"{self.name}'s new location now is {self.location}")
     
     def __str__(self):
         return f"You're name is {self.name}, you're location is {self.location}. {self.wallet}"
@@ -47,7 +47,7 @@ class Vendor(Person):
         self.moveTo(customer.location)
         self.wallet.credit(self.price * self.number_of_icecreams)
         customer.wallet.debit(self.price * self.number_of_icecreams)
-        print(f"{self.number_of_icecreams} were sold!")
+        print(f"{self.number_of_icecreams} ice creams were sold!")
 
     def __str__(self):
         return f"You are the vendor. {super().__str__()} Your range is {self.range} and your price per ice cream is {self.price} KWD."
