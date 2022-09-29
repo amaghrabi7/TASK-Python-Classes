@@ -29,7 +29,7 @@ class Person:
     def moveTo(self, point):
         self.point = point
         self.location = self.point
-        print(f"{self.name}'s new location now is {self.location}")
+        print(f"{self.name}'s new location is now {self.location}")
     
     def __str__(self):
         return f"You're name is {self.name}, you're location is {self.location}. {self.wallet}"
