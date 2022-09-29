@@ -9,9 +9,8 @@ class Wallet:
 
     def debit(self, amount):
         self.amount = amount
-        if self.money >= self.amount:
-            self.money = self.money - self.amount
-            print(f"You now have {self.money} KWD in your wallet.")
+        self.money = self.money - self.amount
+        print(f"You now have {self.money} KWD in your wallet.")
 
     def __str__(self):
         return f"You have {self.money} KWD in your wallet."
