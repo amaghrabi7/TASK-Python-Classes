@@ -4,12 +4,12 @@ class Wallet:
         
     def credit(self, amount):
         self.amount = amount
-        self.money += self.amount
+        self.money += amount
         print(f"You now have {self.money} KWD in your wallet.")
 
     def debit(self, amount):
         self.amount = amount
-        self.money = self.money - self.amount
+        self.money = self.money - amount
         print(f"You now have {self.money} KWD in your wallet.")
 
     def __str__(self):
