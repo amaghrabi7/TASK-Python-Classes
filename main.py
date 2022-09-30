@@ -24,7 +24,7 @@ class Person:
 
     def moveTo(self, point):
         self.point = point
-        self.location = self.point
+        self.location = point
         print(f"{self.name}'s new location is now {self.location}")
     
     def __str__(self):
@@ -41,9 +41,9 @@ class Vendor(Person):
         self.customer = customer
         self.number_of_icecreams = number_of_icecreams
         self.moveTo(customer.location)
-        self.wallet.credit(self.price * self.number_of_icecreams)
-        customer.wallet.debit(self.price * self.number_of_icecreams)
-        print(f"{self.number_of_icecreams} ice creams were sold!")
+        self.wallet.credit(self.price * number_of_icecreams)
+        customer.wallet.debit(self.price * number_of_icecreams)
+        print(f"{number_of_icecreams} ice creams were sold!")
 
     def __str__(self):
         return f"You are the vendor. {super().__str__()} Your range is {self.range} and your price per ice cream is {self.price} KWD."
@@ -55,7 +55,7 @@ class Customer(Person):
 
     def _is_in_range(self, vendor):
         self.vendor = vendor
-        if abs(self.location - vendor.location) <= vendor.range:
+        if abs(location - vendor.location) <= vendor.range:
             print("The customer is in range!")
             return True
         else:
@@ -65,7 +65,7 @@ class Customer(Person):
     def _have_enough_money(self, vendor, number_of_icecreams):
         self.vendor = vendor
         self.number_of_icecreams = number_of_icecreams
-        if self.wallet.money >= (vendor.price * self.number_of_icecreams):
+        if self.wallet.money >= (vendor.price * number_of_icecreams):
             print("The customer has enough money for this purchase!")
             return True
         else:
@@ -77,7 +77,7 @@ class Customer(Person):
         self.number_of_icecreams = number_of_icecreams
         if self._is_in_range and self._have_enough_money:
             print("A request has been made to the vendor!")
-            vendor.sellTo(self, self.number_of_icecreams)
+            vendor.sellTo(customer, number_of_icecreams)
 
     def __str__(self):
         return f"You are the customer. {super().__str__()}"
