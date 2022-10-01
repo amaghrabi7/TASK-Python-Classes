@@ -38,8 +38,6 @@ class Vendor(Person):
         self.price = price
 
     def sellTo(self, customer, number_of_icecreams):
-        self.customer = customer
-        self.number_of_icecreams = number_of_icecreams
         self.moveTo(customer.location)
         self.wallet.credit(self.price * number_of_icecreams)
         customer.wallet.debit(self.price * number_of_icecreams)
@@ -54,8 +52,7 @@ class Customer(Person):
         super().__init__(name, location, wallet)
 
     def _is_in_range(self, vendor):
-        self.vendor = vendor
-        if abs(location - vendor.location) <= vendor.range:
+        if abs(self.location - vendor.location) <= vendor.range:
             print("The customer is in range!")
             return True
         else:
@@ -63,7 +60,6 @@ class Customer(Person):
         return False
     
     def _have_enough_money(self, vendor, number_of_icecreams):
-        self.vendor = vendor
         self.number_of_icecreams = number_of_icecreams
         if self.wallet.money >= (vendor.price * number_of_icecreams):
             print("The customer has enough money for this purchase!")
@@ -73,9 +69,7 @@ class Customer(Person):
         return False
 
     def request_icecream(self, vendor, number_of_icecreams):
-        self.vendor = vendor
-        self.number_of_icecreams = number_of_icecreams
-        if self._is_in_range and self._have_enough_money:
+        if self._is_in_range(vendor) and self._have_enough_money(vendor, number_of_icecreams):
             print("A request has been made to the vendor!")
             vendor.sellTo(customer, number_of_icecreams)
 
@@ -86,5 +80,5 @@ class Customer(Person):
 
 vendor = Vendor("Ahmed", 5, 100)
 customer = Customer("May", 10, 10)
-customer.request_icecream(vendor, 3)
+customer.request_icecream(vendor, 10)
 
