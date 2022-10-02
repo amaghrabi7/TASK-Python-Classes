@@ -15,10 +15,10 @@ class Wallet:
 
 
 class Person:
-    def __init__(self, name, location, wallet):
+    def __init__(self, name, location, money):
         self.name = name
         self.location = location
-        self.wallet = Wallet(wallet)
+        self.wallet = Wallet(money)
 
     def moveTo(self, point):
         self.location = point
@@ -29,8 +29,8 @@ class Person:
 
 
 class Vendor(Person):
-    def __init__(self, name, location, wallet, range = 5, price = 1):
-        super().__init__(name, location, wallet)
+    def __init__(self, name, location, money, range = 5, price = 1):
+        super().__init__(name, location, money)
         self.range = range
         self.price = price
 
@@ -45,8 +45,8 @@ class Vendor(Person):
 
 
 class Customer(Person):
-    def __init__(self, name, location, wallet):
-        super().__init__(name, location, wallet)
+    def __init__(self, name, location, money):
+        super().__init__(name, location, money)
 
     def _is_in_range(self, vendor):
         if abs(self.location - vendor.location) <= vendor.range:
@@ -75,6 +75,6 @@ class Customer(Person):
 
 
 vendor = Vendor("Ahmed", 16, 100)
-customer = Customer("May", 11, 9)
-customer.request_icecream(vendor, 7)
+may = Customer("May", 11, 9)
+may.request_icecream(vendor, 7)
 
