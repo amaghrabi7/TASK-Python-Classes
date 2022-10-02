@@ -15,7 +15,7 @@ class Wallet:
 
 
 class Person:
-    def __init__(self, name, location, money):
+    def __init__(self, name, location, money=0):
         self.name = name
         self.location = location
         self.wallet = Wallet(money)
@@ -29,7 +29,7 @@ class Person:
 
 
 class Vendor(Person):
-    def __init__(self, name, location, money, range = 5, price = 1):
+    def __init__(self, name, location, money=0, range = 5, price = 1):
         super().__init__(name, location, money)
         self.range = range
         self.price = price
@@ -45,7 +45,7 @@ class Vendor(Person):
 
 
 class Customer(Person):
-    def __init__(self, name, location, money):
+    def __init__(self, name, location, money=0):
         super().__init__(name, location, money)
 
     def _is_in_range(self, vendor):
@@ -73,8 +73,7 @@ class Customer(Person):
         return f"You are the customer. {super().__str__()}"
 
 
-
-vendor = Vendor("Ahmed", 16, 100)
-may = Customer("May", 11, 9)
+vendor = Vendor("Ahmed", 16)
+may = Customer("May", 11, 100)
 may.request_icecream(vendor, 7)
 
