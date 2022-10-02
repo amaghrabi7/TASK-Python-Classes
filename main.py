@@ -60,7 +60,6 @@ class Customer(Person):
         return False
     
     def _have_enough_money(self, vendor, number_of_icecreams):
-        self.number_of_icecreams = number_of_icecreams
         if self.wallet.money >= (vendor.price * number_of_icecreams):
             print("The customer has enough money for this purchase!")
             return True
