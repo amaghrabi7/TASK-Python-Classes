@@ -3,12 +3,10 @@ class Wallet:
         self.money = money
         
     def credit(self, amount):
-        self.amount = amount
         self.money += amount
         print(f"You now have {self.money} KWD in your wallet.")
 
     def debit(self, amount):
-        self.amount = amount
         self.money -= amount
         print(f"You now have {self.money} KWD in your wallet.")
 
@@ -23,7 +21,6 @@ class Person:
         self.wallet = Wallet(wallet)
 
     def moveTo(self, point):
-        self.point = point
         self.location = point
         print(f"{self.name}'s new location is now {self.location}.")
     
@@ -70,14 +67,14 @@ class Customer(Person):
     def request_icecream(self, vendor, number_of_icecreams):
         if self._is_in_range(vendor) and self._have_enough_money(vendor, number_of_icecreams):
             print("A request has been made to the vendor!")
-            vendor.sellTo(customer, number_of_icecreams)
+            vendor.sellTo(self, number_of_icecreams)
 
     def __str__(self):
         return f"You are the customer. {super().__str__()}"
 
 
 
-vendor = Vendor("Ahmed", 5, 100)
-customer = Customer("May", 10, 10)
-customer.request_icecream(vendor, 10)
+vendor = Vendor("Ahmed", 16, 100)
+customer = Customer("May", 11, 9)
+customer.request_icecream(vendor, 7)
 
